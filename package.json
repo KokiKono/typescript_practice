@@ -1,0 +1,26 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:ohteru/interface_polymorphism.git",
+  "author": "ohteru <arai_da@camobile.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "ts-loader": "^6.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.4"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.137"
+  }
+}
