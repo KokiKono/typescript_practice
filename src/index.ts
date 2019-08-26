@@ -20,5 +20,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const autoPager: AutoPager = new AutoPager({ props });
-	autoPager.atach();
+	autoPager.atache();
 })

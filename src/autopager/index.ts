@@ -1,6 +1,7 @@
 import baseInterface from '../baseInterface';
 import * as _ from 'lodash';
 
+
 interface autoPager extends baseInterface {
   defaultTarget: Object,
   contentsName: String,
@@ -15,9 +16,9 @@ export default class AutoPager implements autoPager {
   public nextName: String = 'autoPagerNext';
 
 	private target: Object;
-	private contents: Object = new Set();
-	private prev: Object = new Set();
-	private next: Object = new Set();
+	private contents: Object[] = [];
+	private prev: Object[] = [];
+	private next: Object[] = [];
 
 	constructor ({ props }) {
 		this.target = props.target || this.defaultTarget;
@@ -25,30 +26,28 @@ export default class AutoPager implements autoPager {
 		this.nextName = props.nextName || this.nextName;
 	}
 
-	public atach () {
-    async () => {
-      await Promise.all();
-      _.forEach(this.target, (target: Object) => {
-        const datasetModule = target['dataset']['modules'];
-        this.setData(target, datasetModule);
-      });
-    }
+	public atache () {
+    _.forEach(this.target, (target: Object) => {
+      const datasetModule = target['dataset']['modules'];
+      this.setData(target, datasetModule);
+    });
 
     _.forEach(this.contents, (content: Object) => {
       console.log(content);
     });
+
   }
 
   protected setData (target, property) {
     switch (property) {
       case this.contentsName:
-        this.contents['add'](target);
+        this.contents.push(target);
         break;
       case this.prevName:
-        this.prev['add'](target);
+        this.prev.push(target);
         break;
       case this.nextName:
-        this.next['add'](target);
+        this.next.push(target);
         break;
     }
   }
