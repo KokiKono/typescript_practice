@@ -1,0 +1,26 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="index.css")
+      
+  body
+    h1 アコーディオン
+
+    .Accordion.js-accordion
+      .Accordion__trigger.js-accordionTrigger Trigger
+      .Accordion__target.js-accordionTarget Target
+        .Accordion.js-accordion
+          .Accordion__trigger.js-accordionTrigger Trigger
+          .Accordion__target2.js-accordionTarget Target
+
+    .Accordion.js-accordion
+      .Accordion__trigger.js-accordionTrigger Trigger
+      .Accordion__target.Accordion__target--visible.js-accordionTarget Target
+        .Accordion.js-accordion
+          .Accordion__trigger.js-accordionTrigger Trigger
+          .Accordion__target2.js-accordionTarget Target
+
+
+  script.
+    (src='/bundle.js')
