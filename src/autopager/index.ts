@@ -20,10 +20,10 @@ export default class AutoPager implements autoPager {
 	private prev: Object[] = [];
 	private next: Object[] = [];
 
-	constructor ({ props }) {
-		this.target = props.target || this.defaultTarget;
-		this.prevName = props.prevName || this.prevName;
-		this.nextName = props.nextName || this.nextName;
+	constructor ({ prop }) {
+		this.target = prop.target || this.defaultTarget;
+		this.prevName = prop.prevName || this.prevName;
+		this.nextName = prop.nextName || this.nextName;
 	}
 
 	public atache () {
