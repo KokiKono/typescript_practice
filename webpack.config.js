@@ -6,6 +6,11 @@ module.exports = {
   entry: {
     bundle: './index.ts'
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    open: true,
+  },
   mode: 'development',
   module: {
     rules: [
@@ -16,7 +21,12 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        use: 'pug-loader',
+        use: {
+          loader: 'pug-loader',
+          options: {
+            pretty: true
+          }
+        }
       }
     ]
   },
