@@ -6,12 +6,14 @@ interface HTMLElementEvent<T extends HTMLElement> extends Event {
   target: T;
 }
 
+type Heads = ReturnType<typeof document.querySelectorAll>;
+
 export default class Tab implements tab {
-  heads: NodeList;
+  heads: Heads;
   contents: NodeList;
   componetClass: string = 'js-tab';
 
-  constructor (tabHeads: NodeList, tabContents: NodeList) {
+  constructor (tabHeads: Heads, tabContents: Contents) {
     this.heads = tabHeads;
     this.contents = tabContents;
   }
@@ -42,7 +44,7 @@ export default class Tab implements tab {
     const itemActiveClassName = 'Tab__headItem--active';
     const contentsActiveClassName = 'Tab__contentsItem--active';
 
-    this.heads.forEach((item: HTMLElement) => {
+    this.heads.forEach((item) => {
       item.classList.remove(itemActiveClassName);
     });
 
