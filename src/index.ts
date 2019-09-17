@@ -1,43 +1,11 @@
-import Vending from './vending/index';
-import AutoPager from './autoPager/index';
-import Accordion from './accordion/index';
+import VendingInit from './vending/init';
+import AutoPagerInit from './autoPager/init';
+import AccordionController from './accordion/controller';
+import TabInit from './tab/init';
 
 window.addEventListener('DOMContentLoaded', () => {
-  // accordion
-  interface accordion {
-    components: NodeList;
-    triggerClass: string;
-    targetClass: string;
-  }
-
-  const defaultComponents = document.querySelectorAll('.js-accordion');
-  const props: accordion = {
-    components: defaultComponents,
-    triggerClass: 'js-accordionTrigger',
-    targetClass: 'js-accordionTarget',
-  }
-
-  const accordion: Accordion = new Accordion({ props });
-  accordion.atache();
-
-
-  const vending = new Vending();
-  // vending.vending();
-
-  interface autoPager {
-    target: Object,
-    moduleName: String,
-    prevName: String,
-    nextName: String,
-  };
-
-  const prop: autoPager = {
-    target: document.querySelectorAll('[data-modules]'),
-    moduleName: 'autoPager',
-    prevName: 'autoPagerPrev',
-    nextName: 'autoPagerNext',
-  };
-
-  const autoPager: AutoPager = new AutoPager({ prop });
-  autoPager.atache();
+  // AccordionController();
+  // VendingInit();
+  // AutoPagerInit();
+  TabInit();
 })

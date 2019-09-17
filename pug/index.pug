@@ -2,19 +2,14 @@ doctype html
 html(lang='ja')
   head
     meta(charset="utf-8")
-    link(rel="stylesheet", href="index.css")
+    link(type="text/css" rel="stylesheet", href="index.css")
       
   body
-    h1 tsでautopager
+    //- include accordion.pug
+    //- include autopager.pug
+    //- include vending.pug
+    include tab.pug
 
-    div(data-modules="autoPagerContents") 1
-    div(data-modules="autoPagerContents") 2
-    div(data-modules="autoPagerContents") 3
-    div(data-modules="autoPagerContents") 4
-    div(data-modules="autoPagerContents") 5
-
-    div(data-modules="autoPagerPrev") prev
-    div(data-modules="autoPagerNext") next
 
   script.
     (src='/bundle.js')
