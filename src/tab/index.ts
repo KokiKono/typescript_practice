@@ -1,5 +1,5 @@
 interface tab {
-  atache(): void;
+  attach(): void;
 }
 
 interface HTMLElementEvent<T extends HTMLElement> extends Event {
@@ -7,16 +7,16 @@ interface HTMLElementEvent<T extends HTMLElement> extends Event {
 }
 
 export default class Tab implements tab {
-  head: NodeList;
+  heads: NodeList;
   contents: NodeList;
   componetClass: string = 'js-tab';
 
-  constructor (tabHead: NodeList, tabContents: NodeList) {
-    this.head = tabHead;
+  constructor (tabHeads: NodeList, tabContents: NodeList) {
+    this.heads = tabHeads;
     this.contents = tabContents;
   }
 
-  atache () {
+  attach () {
     const tabs = document.querySelectorAll(`.${this.componetClass}`);
     tabs.forEach(item => {
       item.addEventListener('tab-change', (event: CustomEvent) => {
@@ -28,11 +28,11 @@ export default class Tab implements tab {
       })
     });
 
-    this.head.forEach((head: Node, index: number) => {
+    this.heads.forEach((head: Node, index: number) => {
       const tabIndex = String(index);
       head.addEventListener('click', (event: HTMLElementEvent<HTMLElement>) => {
         event.currentTarget.dispatchEvent(
-          this.__tabChangeEvent(tabIndex, event)
+          this.__setTabChangeListener(tabIndex, event)
         );
       })
     })
@@ -42,7 +42,7 @@ export default class Tab implements tab {
     const itemActiveClassName = 'Tab__headItem--active';
     const contentsActiveClassName = 'Tab__contentsItem--active';
 
-    this.head.forEach((item: HTMLElement) => {
+    this.heads.forEach((item: HTMLElement) => {
       item.classList.remove(itemActiveClassName);
     });
 
@@ -50,11 +50,11 @@ export default class Tab implements tab {
       item.classList.remove(contentsActiveClassName);
     });
 
-    this.head[prop.index].classList.add(itemActiveClassName);
+    this.heads[prop.index].classList.add(itemActiveClassName);
     this.contents[prop.index].classList.add(contentsActiveClassName);
   }
 
-  private __tabChangeEvent (index: string, event: HTMLElementEvent<HTMLElement>): CustomEvent {
+  private __setTabChangeListener (index: string, event: HTMLElementEvent<HTMLElement>): CustomEvent {
     return new CustomEvent('tab-change', {
       detail: {
         index,

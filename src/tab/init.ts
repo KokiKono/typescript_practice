@@ -5,5 +5,9 @@ export default () => {
   const tabHead: NodeList = document.querySelectorAll(`.${componentClass}HeadItem`);
   const tabContents: NodeList = document.querySelectorAll(`.${componentClass}ContentsItem`);
   const tab: Tab = new Tab(tabHead, tabContents);
-  tab.atache();
+  tab.attach();
+
+  const tabHead2: NodeList = document.querySelectorAll(`.${componentClass}HeadItem2`);
+  const tab2: Tab = new Tab(tabHead2, tabContents);
+  tab2.attach();
 }
