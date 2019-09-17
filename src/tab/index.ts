@@ -32,13 +32,13 @@ export default class Tab implements tab {
       const tabIndex = String(index);
       head.addEventListener('click', (event: HTMLElementEvent<HTMLElement>) => {
         event.currentTarget.dispatchEvent(
-          this.__tabChangeEvent(event, tabIndex)
+          this.__tabChangeEvent(tabIndex, event)
         );
       })
     })
   }
 
-  __update (prop: {tabs, index: string}) {
+  private __update (prop: {tabs, index: string}) {
     const itemActiveClassName = 'Tab__headItem--active';
     const contentsActiveClassName = 'Tab__contentsItem--active';
 
@@ -54,10 +54,11 @@ export default class Tab implements tab {
     this.contents[prop.index].classList.add(contentsActiveClassName);
   }
 
-  __tabChangeEvent (event: HTMLElementEvent<HTMLElement>, index: string): CustomEvent {
+  private __tabChangeEvent (index: string, event: HTMLElementEvent<HTMLElement>): CustomEvent {
     return new CustomEvent('tab-change', {
       detail: {
-        index: index,
+        index,
+        event,
       },
       bubbles: true,
     });
